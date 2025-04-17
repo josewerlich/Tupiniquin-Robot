@@ -3,7 +3,7 @@ namespace Tupiniquin_Robot
 {
     internal class Program
     {
-        //Version 1: Menu, user input and movement definitions   
+        //Version 2: Instuctions for the input Left   
         static void Main(string[] args)
         {
             
@@ -20,7 +20,7 @@ namespace Tupiniquin_Robot
             Console.Write("Position Y:"); PositionY = Convert.ToInt32(Console.ReadLine());
             Console.Write("Pointing position:"); PointingPosition = Console.ReadLine();
 
-            string input = "MMLMM";
+            string input = "LMLMLMLMM";
 
             char[] instructions = input.ToCharArray();
 
@@ -43,8 +43,21 @@ namespace Tupiniquin_Robot
                     else if (PointingPosition == "W")
                         PositionX--;
                 }
+                else if (instructions[counter].Equals('L'))
+                {
+                    if (PointingPosition == "N")
+                        PointingPosition = "W";
 
-               
+                    else if (PointingPosition == "W")
+                        PointingPosition = "S";
+
+                    else if (PointingPosition == "S")
+                        PointingPosition = "E";
+
+                    else if (PointingPosition == "E")
+                        PointingPosition = "N";
+                }
+
 
             }
            
