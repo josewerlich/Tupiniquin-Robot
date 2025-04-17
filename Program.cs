@@ -3,7 +3,7 @@ namespace Tupiniquin_Robot
 {
     internal class Program
     {
-        //Version 2: Instuctions for the input Left   
+        //Version 3: Instuctions for the input Right   
         static void Main(string[] args)
         {
             
@@ -57,10 +57,24 @@ namespace Tupiniquin_Robot
                     else if (PointingPosition == "E")
                         PointingPosition = "N";
                 }
+                else if (instructions[counter].Equals('R'))
+                {
+                    if (PointingPosition == "N")
+                        PointingPosition = "E";
 
+                    else if (PointingPosition == "E")
+                        PointingPosition = "S";
+
+                    else if (PointingPosition == "S")
+                        PointingPosition = "W";
+
+                    else if (PointingPosition == "W")
+                        PointingPosition = "N";
+                }
 
             }
-           
+            Console.WriteLine();
+            Console.WriteLine("****************New Position****************");
             Console.WriteLine($"Position X: {PositionX}");
             Console.WriteLine($"Position Y: {PositionY}");
             Console.WriteLine($"Point Position: {PointingPosition}"); 
