@@ -1,84 +1,53 @@
 ﻿
 namespace Tupiniquin_Robot
 {
-    internal class Program
+    internal partial class Program
     {
-        //Version 3: Instuctions for the input Right   
+        //Version 4: Creation of the Class Robot - Object-Oriented with Two Rovers, Kay and ExAshTwelve.
         static void Main(string[] args)
         {
-            
-            int PositionX = 0;
-            int PositionY = 0;
-            string PointingPosition;
+            Robot KaiRover = new Robot();
 
-            Console.WriteLine("********************************************");
-            Console.WriteLine("**************Tupiniquin Robot**************");
-            Console.WriteLine("********************************************");
+            ShowMenu();
 
-            Console.WriteLine("Type the initial position of the Robot:");
-            Console.Write("Position X:"); PositionX = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Position Y:"); PositionY = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Pointing position:"); PointingPosition = Console.ReadLine();
+            Console.Write("Position X:"); KaiRover.PositionX = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Position Y:"); KaiRover.PositionY = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Pointing position:"); KaiRover.PointingPosition = Console.ReadLine();
 
             string input = "LMLMLMLMM";
 
             char[] instructions = input.ToCharArray();
 
-            for (int counter = 0; counter < input.Length; counter++)
-            {
+            KaiRover.Explore(instructions);
+
+            KaiRover.ShowLocation();
+
+            ShowMenu();
+
+            Robot ExAshTwelveRover = new Robot();
+
+            Console.Write("Position X:"); ExAshTwelveRover.PositionX = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Position Y:"); ExAshTwelveRover.PositionY = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Pointing position:"); ExAshTwelveRover.PointingPosition = Console.ReadLine();
+
+            string inputTwo = "MMRMMRMRRM";
+
+            char[] instructionsTwo = inputTwo.ToCharArray();
+
+            ExAshTwelveRover.Explore(instructionsTwo);
+
+            ExAshTwelveRover.ShowLocation();
 
 
-                if (instructions[counter].Equals('M'))
-                {
-                    if (PointingPosition == "N")
+        }
 
-                        PositionY++;
+        public static void ShowMenu()
+        {
+            Console.WriteLine("********************************************");
+            Console.WriteLine("**************Tupiniquin Robot**************");
+            Console.WriteLine("********************************************");
 
-                    else if (PointingPosition == "E")
-                        PositionX++;
-
-                    else if (PointingPosition == "S")
-                        PositionY--;
-
-                    else if (PointingPosition == "W")
-                        PositionX--;
-                }
-                else if (instructions[counter].Equals('L'))
-                {
-                    if (PointingPosition == "N")
-                        PointingPosition = "W";
-
-                    else if (PointingPosition == "W")
-                        PointingPosition = "S";
-
-                    else if (PointingPosition == "S")
-                        PointingPosition = "E";
-
-                    else if (PointingPosition == "E")
-                        PointingPosition = "N";
-                }
-                else if (instructions[counter].Equals('R'))
-                {
-                    if (PointingPosition == "N")
-                        PointingPosition = "E";
-
-                    else if (PointingPosition == "E")
-                        PointingPosition = "S";
-
-                    else if (PointingPosition == "S")
-                        PointingPosition = "W";
-
-                    else if (PointingPosition == "W")
-                        PointingPosition = "N";
-                }
-
-            }
-            Console.WriteLine();
-            Console.WriteLine("****************New Position****************");
-            Console.WriteLine($"Position X: {PositionX}");
-            Console.WriteLine($"Position Y: {PositionY}");
-            Console.WriteLine($"Point Position: {PointingPosition}"); 
-            Console.ReadLine();
+            Console.WriteLine($"Type the initial position of the rover: ");
         }
     }
 }
