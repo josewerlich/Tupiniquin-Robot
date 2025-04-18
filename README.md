@@ -12,6 +12,7 @@ You’re controlling a robotic rover deployed on a plateau on Mars. The plateau 
 - You provide a string of movement commands.
 - The rover explores based on the commands and returns its final location.
 - There are two rovers, so you first inform the position of the first one, and after for the second rover. 
+- The point position is based on N - North, S - South, E - East and W - West.
 ---
 
 ## Demo
